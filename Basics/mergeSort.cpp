@@ -26,7 +26,7 @@ void merge_sort_recursion(int arr[], int l, int r)
     if( l < r) 
     {
         cout << l << " < " << r << endl;
-        merge_sort_recursion(arr, l, mid);
-        //merge_sort_recursion(arr, mid + 1, r);
+        //merge_sort_recursion(arr, l, mid);
+        merge_sort_recursion(arr, mid + 1, r);
     }
 }
