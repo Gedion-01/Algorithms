@@ -14,7 +14,7 @@ int main() {
 }
 
 void draw(int n) {
-    if(n <= 0) {
+    if(n < 0) {
         return;
     }
     draw(n - 1);
