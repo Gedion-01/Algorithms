@@ -4,19 +4,18 @@ let sortedNums = [1, 2, 3, 4, 5, 6]
 
 function bubbleSort(arr) {
     let isSwapped = false
-
     for(let i = 0; i < arr.length; i++) {
-        isSwapped = false
-        for(let j = 0; j < arr.length - 1 - i; j++) {
-            if(arr[j] > arr[j + 1]) {
+        isSwapped = false      
+        for(let j = 0; j < arr.length - 1; j++) {
+            if(arr[j] > arr[j+1]) {
                 isSwapped = true
-
-                let temp = arr[j]
                 // swap
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temp
+                let temp = arr[j +1]
+                arr[j+1] = arr[j]
+                arr[j] = temp
             }
         }
+        // in the first iteration the array is in sorted order lets break
         if(!isSwapped) {
             break
         }
