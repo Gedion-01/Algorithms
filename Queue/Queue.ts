@@ -56,8 +56,8 @@ q1.enqueue(2);
 q1.enqueue(3);
 q1.enqueue(4);
 
-// q1.dequeue();
-// q1.dequeue();
-// q1.dequeue();
+q1.dequeue();
+q1.dequeue();
+q1.dequeue();
 
 console.log(q1.peek())
