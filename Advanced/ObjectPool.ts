@@ -33,7 +33,7 @@ class PooledObject {
 }
 
 const pool = new ObjectPool<PooledObject>(
-    () => new PooledObject(0), // Function to create new objects
-    (obj) => obj.reset(),      // Function to reset objects when released back to pool
-    5                          // Initial size of the pool
+    () => new PooledObject(0),
+    (obj) => obj.reset(),
+    5                          
 );
