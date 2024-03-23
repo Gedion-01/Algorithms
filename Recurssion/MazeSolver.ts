@@ -12,17 +12,17 @@ let dir = [
 
 function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boolean[][], path: Point[]): boolean {
     if(curr.x < 0 || curr.x >= maze[0].length ||
-        curr.y < 0 || curr.y >= maze.length) { // Corrected line
+        curr.y < 0 || curr.y >= maze.length) { // are we off the map
             return false;
     }
     if(maze[curr.y][curr.x] === wall) {
-        return false;
+        return false; // is it a wall
     }
-    if(curr.x === end.x && curr.y === end.y) {
+    if(curr.x === end.x && curr.y === end.y) { // we have found the end
         path.push(end);
         return true;
     }
-    if(seen[curr.y][curr.x]) {
+    if(seen[curr.y][curr.x]) { // have we already seen it
         return false;
     }
 
@@ -31,7 +31,7 @@ function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boole
     seen[curr.y][curr.x] = true;
     path.push(curr)
     console.log(curr)
-    
+    console.log(dir.length)
     // recurse
     for(let i = 0; i < dir.length; i++) {
         const [x, y] = dir[i];
