@@ -2,7 +2,6 @@ type Point = {
     x: number,
     y: number
 }
-
 let dir = [
     [-1, 0],
     [1, 0],
@@ -10,35 +9,29 @@ let dir = [
     [0, 1]
 ]
 
-function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boolean[][], path: Point[]): boolean {
-    if(curr.x < 0 || curr.x >= maze[0].length ||
-        curr.y < 0 || curr.y >= maze.length) { // are we off the map
-            return false;
-    }
-    if(maze[curr.y][curr.x] === wall) {
-        return false; // is it a wall
-    }
-    if(curr.x === end.x && curr.y === end.y) { // we have found the end
-        path.push(end);
-        return true;
-    }
-    if(seen[curr.y][curr.x]) { // have we already seen it
+function walk(maze: string[], wall: String, curr: Point, end: Point, seen: boolean[][], path: Point[]): boolean {
+    // are we of the map
+    if(curr.x < 0 || curr.x >= maze[0].length || curr.y < 0 || curr.y >= maze.length) {
         return false;
     }
-
-    // 3 recurs
-    // pre
+    // is it a wall
+    if(maze[curr.y][curr.x] === wall) {
+        return false;
+    }
+    // do we found the end
+    if(curr.y === end.y && curr.x === end.x) {
+        path.push(curr);
+        return true;
+    }
+    // have we already seen it
+    if(seen[curr.y][curr.x]) {
+        return false;
+    }
     seen[curr.y][curr.x] = true;
-    path.push(curr)
-    console.log(curr)
-    console.log(dir.length)
-    // recurse
+    path.push(curr);
+
     for(let i = 0; i < dir.length; i++) {
         const [x, y] = dir[i];
-        console.log("---");
-        console.log("x", curr.x, "+", x)
-        console.log("y", curr.y, "+", y)
-        console.log("---");
         if(walk(maze, wall, {
             x: curr.x + x,
             y: curr.y + y
@@ -46,20 +39,19 @@ function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boole
             return true;
         }
     }
-    //post
-    path.pop()
+
+    path.pop();
 
     return false;
-}
 
-function solve(maze: string[], wall: string, start: Point, end: Point): Point[] {
+}
+function solve(maze: string[], wall: String, start: Point, end: Point, ): Point[] {
     const seen: boolean[][] = [];
     const path: Point[] = [];
 
-    for(let i = 0; i < maze.length; i ++) {
+    for(let i = 0; i < maze.length; i++) {
         seen.push(new Array(maze[0].length).fill(false));
     }
-
     walk(maze, wall, start, end, seen, path);
 
     return path;
@@ -70,5 +62,5 @@ const maze = [
     'x     x',
     'x xxxxx'
 ]
-const p = solve(maze, 'x', {x: 5, y: 0}, {x: 1, y: 3});
-console.log(p);
+const path = solve(maze, 'x', {x: 5, y: 0}, {x: 1, y: 3});
+console.log(path);
