@@ -11,8 +11,8 @@ function partition(array: number[], start: number, end: number): number {
         }
     }
     i++;
-    arr[end] = arr[i];
-    arr[i] = pivot;
+    array[end] = array[i];
+    array[i] = pivot;
     return i;
 }
 
@@ -22,8 +22,7 @@ function quickSort(array: number[], start: number, end: number): void {
         return;
     }
     const pivot = partition(array, start, end);
-    console.log(pivot);
-    console.log(arr);
+
     quickSort(array, start, pivot -1);
     quickSort(array, pivot + 1, end);
     
@@ -31,11 +30,11 @@ function quickSort(array: number[], start: number, end: number): void {
 }
 
 const arr = [8, 2, 5, 3, 9, 4, 7, 6, 1];
-// const arr2 = [7, 6, 5, 4, 3, 2, 1];
+const arr2 = [7, 6, 5, 4, 3, 2, 1];
 
 quickSort(arr, 0, arr.length - 1);
 console.log(arr)
 
-// quickSort(arr2, 0, arr2.length - 1);
-// console.log(arr2);
+quickSort(arr2, 0, arr2.length - 1);
+console.log(arr2);
 
