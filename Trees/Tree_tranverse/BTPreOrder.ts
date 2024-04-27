@@ -1,12 +1,5 @@
 import { tree } from "../tree";
 import { BinaryNode } from "../tree_types";
-// type BinaryNode<T> = {
-//   value: T;
-//   left: BinaryNode<T> | null;
-//   right: BinaryNode<T> | null;
-// };
-/// <reference path="../../type.d.ts" />
-
 
 function walk(curr: BinaryNode<number> | null, path: number[]): number[] {
   if (!curr) {

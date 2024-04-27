@@ -6,18 +6,18 @@ function walk(curr: BinaryNode<number> | null, path: number[]): number[] {
     return path;
   }
   // pre
-
+  
   // recurse
   walk(curr.left, path);
-  path.push(curr.value);
   walk(curr.right, path);
   // post
+  path.push(curr.value);
   return path;
 }
-function in_order_search(head: BinaryNode<number>): number[] {
+function post_order_search(head: BinaryNode<number>): number[] {
   return walk(head, []);
 }
 
-const res = in_order_search(tree);
+const res = post_order_search(tree);
 
 console.log(res);
